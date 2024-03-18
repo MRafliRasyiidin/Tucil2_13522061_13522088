@@ -1,6 +1,7 @@
 from utilities import *
 import time
 from algorithm import *
+from bruteforce import *
 
 if __name__ == "__main__":
     run = True
@@ -24,10 +25,19 @@ if __name__ == "__main__":
             iteration = inputIteration()
             bezierPoints = []
             start = time.time()
-            bezierDnC(controlPoints, bezierPoints, iteration)
+            animate_graph(controlPoints, iteration)
             stop = time.time()
             print(f"Runtime: {stop - start} ms")
-            # to be added
+        elif opsi == 3:
+            N = inputN()
+            controlPoints = inputPoints(N)
+            iteration = inputIteration()
+            bezierPoints = []
+            start = time.time()
+            bezierBF(controlPoints, N, 2**(iteration), bezierPoints)
+            stop = time.time()
+            print(f"Runtime: {stop - start} ms")
+            generatePlotBF(controlPoints,bezierPoints)
         else:
             run = False
             print("Jaa matanee ~ ~")

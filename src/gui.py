@@ -1,6 +1,4 @@
 import tkinter as tk
-import sys
-sys.path.append('../Tucil2_13522061_13522088/src')
 from algorithm import *
 from bruteforce import *
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg

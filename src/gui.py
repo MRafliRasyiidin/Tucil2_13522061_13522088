@@ -1,8 +1,8 @@
 import tkinter as tk
 import sys
 sys.path.append('../Tucil2_13522061_13522088/src')
-from Tucil2_13522061_13522088.src import algorithm
-from Tucil2_13522061_13522088.src import bruteforce
+from algorithm import *
+from bruteforce import *
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import matplotlib.pyplot as plt
 import numpy as np
@@ -11,7 +11,7 @@ from tkinter import ttk
 import time
 
 def process_point():
-    global canvas, warn_label, iterate, points, result_points
+    global canvas, warn_label, iterate, points, result_points, exec_label
     points = []
     try:
         clear_warn_label()
@@ -21,10 +21,14 @@ def process_point():
             x, y = map(float, arr[i].get().split())
             points.append((x,y))
         result_points = []
-        algorithm.bezierDnC(points, result_points, iterate)
+        start = time.time()
+        bezierDnC(points, result_points, iterate)
+        stop = time.time()
+        exec_time = stop-start
         result_points = np.array(result_points)
         points = np.array(points)
         generate_plot(points, result_points)
+        update_exec(exec_time)
     except ValueError:
         clear_warn_label()
         warn_label = tk.Label(text="Pastikan input yang diberikan sudah sesuai")
@@ -41,6 +45,7 @@ def input_titik():
     clear_graph()
     clear_warn_label()
     clear_grid()
+    clear_exec()
     reset()
     try:
         jumlah_titik = int(n.get())
@@ -69,7 +74,7 @@ def show_all():
     fig.plot(points[:, 0], points[:, 1], 's--', label='Control Points', color='gray')
     for i in range (1, iterate+1):
         result = []
-        algorithm.bezierDnC(points, result, i)
+        bezierDnC(points, result, i)
         result = np.array(result)
         fig.plot(result[:, 0], result[:, 1], 'o-', label=f'Iterasi ke-{i}')
         fig.legend()
@@ -79,6 +84,24 @@ def show_all():
     graph = FigureCanvasTkAgg(f, master=root)
     graph.draw()
     graph.get_tk_widget().grid(row=0, column=5, rowspan=30)
+
+def update_exec(time):
+    global exec_label
+    try:
+        exec_label.grid_remove()
+        exec_label = tk.Label(root, text=f"Execution time: {time} ms")
+        exec_label.grid(row=40, column=5, sticky="w")   
+    except:
+        pass
+
+def clear_exec():
+    global exec_label
+    try:
+        exec_label.grid_remove()
+        exec_label = tk.Label(root, text=f"Execution time: 0 ms")
+        exec_label.grid(row=40, column=5, sticky="w")   
+    except:
+        pass
 
 def clear_submit_button():
     global submit_button
@@ -123,17 +146,20 @@ def reset():
 
 def generate_plot(control_points, bezier_points):
     global graph
-    f = Figure(figsize = (5.4,5.4), dpi = 100)
-    fig = f.add_subplot(111)
-    fig.plot(bezier_points[:, 0], bezier_points[:, 1], 'o-', label='DnC Bézier Curve')
-    fig.plot(control_points[:, 0], control_points[:, 1], 's--', label='Control Points', color='gray')
-    fig.legend()
-    fig.set_title('DnC Bézier Curve')
-    fig.set_xlabel('X-axis')
-    fig.set_ylabel('Y-axis')
-    graph = FigureCanvasTkAgg(f, master=root)
-    graph.draw()
-    graph.get_tk_widget().grid(row=0, column=5, rowspan=30)
+    try:
+        f = Figure(figsize = (5.4,5.4), dpi = 100)
+        fig = f.add_subplot(111)
+        fig.plot(bezier_points[:, 0], bezier_points[:, 1], 'o-', label='DnC Bézier Curve')
+        fig.plot(control_points[:, 0], control_points[:, 1], 's--', label='Control Points', color='gray')
+        fig.legend()
+        fig.set_title('DnC Bézier Curve')
+        fig.set_xlabel('X-axis')
+        fig.set_ylabel('Y-axis')
+        graph = FigureCanvasTkAgg(f, master=root)
+        graph.draw()
+        graph.get_tk_widget().grid(row=0, column=5, rowspan=30)
+    except:
+        pass
 
 def empty_graph():
     global graph
@@ -164,7 +190,7 @@ def animate_graph():
         iterate = int(iterate_entry.get())
         for i in range(1, iterate + 1):
             result = []
-            algorithm.bezierDnC(points, result, i)
+            bezierDnC(points, result, i)
             result = np.array(result)
             root.after(i*1000, lambda result=result:generate_plot(points, result))
     except:
@@ -221,6 +247,9 @@ animate_button = tk.Button(root, text="Animate", command=animate_graph)
 animate_button.grid(row=11,column=0)
 check_button = ttk.Checkbutton(root, text="Tampilkan semua iterasi", command=checkbox_handler, variable=checkbox_var)
 check_button.grid(row=12, column=0)
+
+exec_label = tk.Label(root, text="Execution time: 0 ms")
+exec_label.grid(row=40, column=5, sticky="w")
 
 # Create another frame inside the canvas to hold the input fields
 inner_frame = ttk.Frame(canvas)

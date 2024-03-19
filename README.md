@@ -53,7 +53,7 @@ Untuk menjalankan program maka anda memiliki dua pilihan:
 python src/main.py
 ```
 
--Menggunakan GUI : Cara ini dapat digunakan agar mempermudah visualisasi input dan juga plot. Cara run program berbasis GUI maka anda cukup menjalankan command di bawah di root directory project ini
+- Menggunakan GUI : Cara ini dapat digunakan agar mempermudah visualisasi input dan juga plot. Cara run program berbasis GUI maka anda cukup menjalankan command di bawah di root directory project ini
 
 ```shell
 python src/gui.py

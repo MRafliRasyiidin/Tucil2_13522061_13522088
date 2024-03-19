@@ -77,7 +77,7 @@ def generatePlotBF(initialControlPoints, bezierPoints):
     plt.plot(initialControlPoints[:, 0], initialControlPoints[:, 1], 's--', label='Control Points', color='gray')
     plt.legend()
     plt.grid(True)
-    plt.title('DnC Bézier Curve')
+    plt.title('Brute Force Bézier Curve')
     plt.xlabel('X-axis')
     plt.ylabel('Y-axis')
     plt.show()

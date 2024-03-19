@@ -45,3 +45,14 @@ def bezierBF(list, nTitik, iterasi, points):
             nPangkat_p -= 1
             nPangkat_t += 1
         points.append((x,y))
+    
+def bezierTigaDnC(P0, P1, P2, iterasi, points):
+    if iterasi == 0:
+        points.append(P0)
+        points.append(P2)
+    else:
+        M0 = (P0 + P1) / 2
+        M1 = (P1 + P2) / 2
+        Q = (M0 + M1) / 2
+        bezierDnC(P0, M0, Q, iterasi - 1, points)
+        bezierDnC(Q, M1, P2, iterasi - 1, points)

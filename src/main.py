@@ -14,9 +14,9 @@ if __name__ == "__main__":
             controlPoints = inputPoints(N)
             iteration = inputIteration()
             bezierPoints = []
-            start = time.time()
+            start = time.perf_counter()
             bezierDnC(controlPoints, bezierPoints, iteration)
-            stop = time.time()
+            stop = time.perf_counter()
             print(f"Runtime: {(stop - start)*1000} ms")
             generatePlot(controlPoints,bezierPoints)
         elif opsi == 2:
@@ -24,18 +24,18 @@ if __name__ == "__main__":
             controlPoints = inputPoints(N)
             iteration = inputIteration()
             bezierPoints = []
-            start = time.time()
+            start = time.perf_counter()
             animate_graph(controlPoints, iteration)
-            stop = time.time()
+            stop = time.perf_counter()
             print(f"Runtime: {(stop - start)*1000} ms")
         elif opsi == 3:
             N = inputN()
             controlPoints = inputPoints(N)
             iteration = inputIteration()
             bezierPoints = []
-            start = time.time()
+            start = time.perf_counter()
             bezierBF(controlPoints, N, 2**(iteration), bezierPoints)
-            stop = time.time()
+            stop = time.perf_counter()
             print(f"Runtime: {(stop - start)*1000} ms")
             generatePlotBF(controlPoints,bezierPoints)
         else:

@@ -18,11 +18,11 @@ def inputPoints(n):
             try:
                 line = input(f"Masukan point ke-{i+1} (format 'x y'): ")
                 x_str, y_str = line.split()
-                x, y = int(x_str), int(y_str)
+                x, y = float(x_str), float(y_str)
                 points.append((x, y))
                 break
             except ValueError:
-                print("Input salah! Pastikan input merupakan integer dan dibagi oleh satu spasi!")
+                print("Input salah! Pastikan input merupakan angka dan dibagi oleh satu spasi!")
     points = np.array(points)
     return points
 

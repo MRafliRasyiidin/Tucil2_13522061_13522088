@@ -1,0 +1,24 @@
+File ini berisi penjelasan mengenai tc.txt
+
+1           #Pilihan DnC
+6           #Banyak titik kontrol
+1 2         #Input Point
+5 9
+20 1
+8 -1
+13 7
+30 10
+6           #Banyak iterasi
+3           #Pilihan Brute Force
+6           #Banyak titik kontrol
+1 2         #Input titik kontrol
+5 9
+20 1
+8 -1
+13 7
+30 10
+6           #Banyak Iterasi
+
+Jika ingin menggunakan tc, silakan pilih salah satu tc dan copy seluruh konten di dalamnya.
+Kemudian, jalankan file main.py dan paste konten yang di copy ke terminal.
+Program akan menjalankan DnC dan langsung dilanjut dengan brute force.

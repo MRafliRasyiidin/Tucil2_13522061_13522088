@@ -1,6 +1,5 @@
 import tkinter as tk
 from algorithm import *
-from bruteforce import *
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import matplotlib.pyplot as plt
 import numpy as np

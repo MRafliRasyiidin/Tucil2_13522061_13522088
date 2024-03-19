@@ -28,9 +28,10 @@ if __name__ == "__main__":
             N = inputN()
             controlPoints = inputPoints(N)
             iteration = inputIteration()
-            bezierPoints = []
+            bezierPoints = [controlPoints[0]]
             start = time.perf_counter()
             bezierBF(controlPoints, N, 2**(iteration), bezierPoints)
+            bezierPoints.append(controlPoints[-1])
             stop = time.perf_counter()
             print(f"Runtime: {(stop - start)*1000} ms")
             generatePlotBF(controlPoints,bezierPoints)

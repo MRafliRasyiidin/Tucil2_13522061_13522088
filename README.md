@@ -11,15 +11,11 @@
 
 ## Table of Contents
 * [Deskripsi Singkat](#deskripsi-singkat)
-* [Technologies Used](#technologies-used)
-* [Features](#features)
-* [Screenshots](#screenshots)
+* [Deskripsi Permasalahan](#deskripsi-permasalahan)
+* [Libraries Used](#libraries-used)
 * [Setup](#setup)
 * [Usage](#usage)
-* [Project Status](#project-status)
-* [Room for Improvement](#room-for-improvement)
-* [Acknowledgements](#acknowledgements)
-* [Contact](#contact)
+* [Links](#links)
 <!-- * [License](#license) -->
 
 
@@ -28,66 +24,41 @@ Pada tugas kecil ini kami ditugaskan untuk membuat kurva bezier menggunakan stra
 <!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
 
-## Technologies Used
-- Tech 1 - version 1.0
-- Tech 2 - version 2.0
-- Tech 3 - version 3.0
+## Deskripsi Permasalahan
+Kurva Bézier merupakan kurva yang sering digunakan dalam desain grafis, animasi, dan manufaktur. Dalam pembuatannya kurva ini memiliki N titik kontrol dimana setiap titik kontrol akan dihubungkan dengan sebuah kurva. Untuk pembentukannya kurva bézier dapat menggunakan sebuah persamaan parametrik, namun seiring bertambahnya titik maka persamaan pun semakin panjang dan kompleks. Oleh karena itu dibutuhkan solusi lain, dalam hal ini menggunakan algoritma Divide and Conquer, dengan harapan akan memiliki efisiensi yang lebih baik.
 
 
-## Features
-List the ready features here:
-- Awesome feature 1
-- Awesome feature 2
-- Awesome feature 3
-
-
-## Screenshots
-![Example screenshot](./img/screenshot.png)
-<!-- If you have screenshots you'd like to share, include them here. -->
+## Libraries Used
+Berikut adalah library yang dipakai
+- matplotlib            3.8.1
+- tkinter               8.6.12
+- numpy                 1.26.4
+- time
+- math
 
 
 ## Setup
-What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
+Pastikan seluruh library yang dipakai sudah ter-install dalam device anda. Jikabelum maka anda dapat meng-install nya dengan cara run command di bawah ini
 
-Proceed to describe how to install / setup one's local environment / get started with the project.
+```shell
+pip install -r src/requirements.txt
+```
 
 
 ## Usage
-How does one go about using it?
-Provide various use cases and code examples here.
+Untuk menjalankan program maka anda memiliki dua pilihan:
+- Menggunakan CLI : Cara ini **DISARANKAN** untuk iterasi yang berjumlah banyak. Cara run program berbasis CLI maka anda cukup menjalankan command di bawah di root directory project ini
 
-`write-your-code-here`
+```shell
+python src/main.py
+```
 
+-Menggunakan GUI : Cara ini dapat digunakan agar mempermudah visualisasi input dan juga plot. Cara run program berbasis GUI maka anda cukup menjalankan command di bawah di root directory project ini
 
-## Project Status
-Project is: _in progress_ / _complete_ / _no longer being worked on_. If you are no longer working on it, provide reasons why.
+```shell
+python src/gui.py
+```
 
-
-## Room for Improvement
-Include areas you believe need improvement / could be improved. Also add TODOs for future development.
-
-Room for improvement:
-- Improvement to be done 1
-- Improvement to be done 2
-
-To do:
-- Feature to be added 1
-- Feature to be added 2
-
-
-## Acknowledgements
-Give credit here.
-- This project was inspired by...
-- This project was based on [this tutorial](https://www.example.com).
-- Many thanks to...
-
-
-## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
-
-
-<!-- Optional -->
-<!-- ## License -->
-<!-- This project is open source and available under the [... License](). -->
-
-<!-- You don't have to include all sections - just the one's relevant to your project -->
+## Links
+- [Spesifikasi Tugas Kecil 2 IF2211 Strategi Algoritma 2023/2024](https://docs.google.com/document/d/161qTQR5PzjQUIsoLO00A0Rp1dvsahrXY2Dk-fSmJl2o/edit).
+- [Laporan [email std]](https://docs.google.com/document/d/1vaaxxt-4EWhpEPAtTjvysETvmU4RrV2bjP1D0OY8O9o/edit)

@@ -1,7 +1,6 @@
 from utilities import *
 import time
 from algorithm import *
-from bruteforce import *
 
 if __name__ == "__main__":
     run = True
@@ -24,10 +23,7 @@ if __name__ == "__main__":
             controlPoints = inputPoints(N)
             iteration = inputIteration()
             bezierPoints = []
-            start = time.perf_counter()
             animate_graph(controlPoints, iteration)
-            stop = time.perf_counter()
-            print(f"Runtime: {(stop - start)*1000} ms")
         elif opsi == 3:
             N = inputN()
             controlPoints = inputPoints(N)
